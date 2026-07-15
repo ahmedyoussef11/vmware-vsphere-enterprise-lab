@@ -1,3 +1,4 @@
+<img width="961" height="176" alt="Lab Console - VMware Lab Platform and 3 more pages - Personal - Microsoft​ Edge 7_15_2026 5_58_01 PM" src="https://github.com/user-attachments/assets/c5333fff-f4f5-4dac-a59a-80636169a435" />
 <img width="961" height="176" alt="Lab Console - VMware Lab Platform and 3 more pages - Personal - Microsoft​ Edge 7_15_2026 5_58_01 PM" src="https://github.com/user-attachments/assets/f9c63db4-02f3-425f-a0cb-e07452a0ce8e" />
 <img width="961" height="176" alt="Lab Console - VMware Lab Platform and 3 more pages - Personal - Microsoft​ Edge 7_15_2026 5_58_01 PM" src="https://github.com/user-attachments/assets/27de3be7-9345-44f8-b33d-c927f4571817" />
 # VMware vSphere Enterprise Administration Hands-on Lab
@@ -150,7 +151,7 @@ Compute vMotion is commonly used during:
 - Cluster load balancing
 - Resource optimization
 
-<img width="961" alt="Compute vMotion" src="https://github.com/user-attachments/assets/9314f7ce-ed9e-47d6-a45e-a5a8749a707c">
+<img width="961" height="176" alt="Lab Console - VMware Lab Platform and 3 more pages - Personal - Microsoft​ Edge 7_15_2026 5_58_01 PM" src="https://github.com/user-attachments/assets/b84a11bf-ea9e-4f1f-9825-c77bde1228c2" />
 
 ---
 
