@@ -1,4 +1,4 @@
-# VMware vSphere Enterprise Administration Hands-on Lab
+# Enterprise VMware vSphere Administration
 
 ## Overview
 
@@ -12,17 +12,11 @@ The goal wasn't just to learn the theory, but to work directly with a vSphere en
 
 - VMware vCenter Server
 - VMware ESXi
-- 2 ESXi Hosts
+- VMware VAMI (vCenter Server Appliance Management Interface)
+- 3 ESXi Hosts
 - 1 Datacenter
 - 1 Compute Cluster
 - Windows & Linux Virtual Machines
-- Resource Pools
-- VM Templates
-- Virtual Machine Cloning
-- Snapshot Management
-- Compute vMotion (Live Migration)
-- DRS VM Rules (Affinity / Anti-Affinity)
-- Performance Monitoring
 
 ---
 
@@ -152,8 +146,43 @@ Compute vMotion is commonly used during:
 
 ---
 
-# What I Learned
+# 9. Managing Cluster Configuration with Desired State
 
-Through this lab, I gained hands-on experience with several common VMware administration tasks.
+To keep all ESXi hosts configured consistently, I used **Desired State Configuration** at the cluster level.
 
-Instead of only reading about these features, I configured and tested them directly inside VMware vCenter, which gave me a much better understanding of how they are used in real enterprise environments.
+I created a desired configuration, verified host compliance, intentionally introduced configuration drift, and finally remediated the hosts to bring them back into compliance.
+
+This approach helps maintain configuration consistency across all ESXi hosts without configuring each host individually.
+
+<img width="961" height="572" alt="Lab Console - VMware Lab Platform and 4 more pages - Personal - Microsoft​ Edge 7_15_2026 8_16_15 PM" src="https://github.com/user-attachments/assets/dc5bef83-23cc-49f6-a0fc-372dc79637e7" />
+
+---
+
+# 10. Managing vSphere Cluster Services (vCLS)
+
+I explored how **vSphere Cluster Services (vCLS)** support cluster functionality by maintaining the services required for features such as DRS.
+
+I also configured a Compute Policy to keep vCLS virtual machines separated from selected production workloads using Anti-Affinity rules.
+
+<img width="965" height="570" alt="Lab Console - VMware Lab Platform and 4 more pages - Personal - Microsoft​ Edge 7_15_2026 7_51_56 PM" src="https://github.com/user-attachments/assets/f61aee0d-7fd2-448e-bcc3-de877ea1fdbb" />
+
+---
+
+# 11. Cross vCenter vMotion
+
+In addition to Compute vMotion, I explored **Cross vCenter vMotion**, which allows virtual machines to be migrated between different vCenter Server instances.
+
+This feature is useful during datacenter migrations, infrastructure consolidation, and moving workloads between independent VMware environments without rebuilding the virtual machines.
+
+<img width="965" height="572" alt="Lab Console - VMware Lab Platform and 4 more pages - Personal - Microsoft​ Edge 7_15_2026 8_26_53 PM" src="https://github.com/user-attachments/assets/6c4548b6-f48e-476c-a6aa-117a23b235a7" />
+
+---
+
+# 12. Configuring vCenter Backups
+
+To protect the management infrastructure, I configured both manual and scheduled backups for the **vCenter Server Appliance** using the **vCenter Server Appliance Management Interface (VAMI)**.
+
+Unlike VM snapshots, VAMI backups preserve the vCenter inventory, configuration, certificates, and historical data, making them suitable for disaster recovery scenarios.
+
+<img width="961" height="574" alt="Lab Console - VMware Lab Platform and 4 more pages - Personal - Microsoft​ Edge 7_15_2026 8_23_20 PM" src="https://github.com/user-attachments/assets/787b06f7-421b-4dfe-b3b8-e7c87282df6d" />
+
