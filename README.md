@@ -1,6 +1,3 @@
-<img width="961" height="176" alt="Lab Console - VMware Lab Platform and 3 more pages - Personal - Microsoft​ Edge 7_15_2026 5_58_01 PM" src="https://github.com/user-attachments/assets/c5333fff-f4f5-4dac-a59a-80636169a435" />
-<img width="961" height="176" alt="Lab Console - VMware Lab Platform and 3 more pages - Personal - Microsoft​ Edge 7_15_2026 5_58_01 PM" src="https://github.com/user-attachments/assets/f9c63db4-02f3-425f-a0cb-e07452a0ce8e" />
-<img width="961" height="176" alt="Lab Console - VMware Lab Platform and 3 more pages - Personal - Microsoft​ Edge 7_15_2026 5_58_01 PM" src="https://github.com/user-attachments/assets/27de3be7-9345-44f8-b33d-c927f4571817" />
 # VMware vSphere Enterprise Administration Hands-on Lab
 
 ## Overview
