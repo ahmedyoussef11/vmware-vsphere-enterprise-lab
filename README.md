@@ -4,21 +4,25 @@
 
 This project demonstrates the administration of an enterprise VMware vSphere environment using VMware vCenter Server.
 
-The objective of this lab was to simulate real-world Infrastructure Engineer tasks including resource management, virtual machine administration, templates, snapshots, DRS rules, monitoring, and workload organization.
+The objective of this lab was to simulate real-world Infrastructure Engineer tasks including resource management, virtual machine administration, templates, cloning, snapshots, **Compute vMotion**, DRS rules, performance monitoring, and workload organization.
 
 ---
 
 # Lab Environment
 
 - VMware vCenter Server
+- VMware ESXi
 - 2 ESXi Hosts
 - 1 Datacenter
-- 1 Cluster
+- 1 Compute Cluster
 - Windows & Linux Virtual Machines
 - Resource Pools
 - VM Templates
+- Virtual Machine Cloning
 - Snapshots
-- DRS Rules
+- Compute vMotion
+- DRS VM Rules
+- Performance Monitoring
 
 ---
 
@@ -36,8 +40,7 @@ The dashboard provides a quick overview of:
 
 This is usually the first screen an administrator checks before performing any operation.
 
-![Home Dashboard](<img width="963" height="540" alt="Lab Console - VMware Lab Platform and 3 more pages - Personal - Microsoft​ Edge 7_15_2026 5_53_31 PM" src="https://github.com/user-attachments/assets/b2b9432f-5d15-4f6a-861e-1d6f0b294edc" />
-)
+<img width="963" alt="Home Dashboard" src="https://github.com/user-attachments/assets/b2b9432f-5d15-4f6a-861e-1d6f0b294edc">
 
 ---
 
@@ -55,44 +58,27 @@ Inside the cluster are:
 
 This hierarchy represents how enterprise environments are organized.
 
-![Datacenter Overview](<img width="963" height="539" alt="Lab Console - VMware Lab Platform and 3 more pages - Personal - Microsoft​ Edge 7_15_2026 5_53_56 PM" src="https://github.com/user-attachments/assets/0c5c8752-e94b-4bf5-a636-344130014e5a" />
-)
+<img width="963" alt="Datacenter Overview" src="https://github.com/user-attachments/assets/0c5c8752-e94b-4bf5-a636-344130014e5a">
 
 ---
 
 # 3. Organizing Workloads with Resource Pools
 
-To simulate a production environment, Resource Pools were created for different workloads.
+To simulate a production environment, Resource Pools were created to logically separate workloads based on their function.
 
-## Development
+### Development
 
 Application servers used for software development.
 
-## Production
+### Production
 
 Production Linux servers running business services.
 
-## Testing
+### Testing
 
 Quality Assurance virtual machines.
 
-After creating the pools, virtual machines were migrated into their corresponding Resource Pools.
-
-Example:
-
-Development
-- app-serv01
-- web-serv01
-
-Production
-- TinyLinux
-- TinyLinux2
-
-Testing
-- Windows10
-
-This allows administrators to manage CPU and Memory resources independently for each department.
-
+Virtual machines were organized into their corresponding Resource Pools, allowing administrators to manage CPU and Memory resources independently for each environment.
 
 ---
 
@@ -102,7 +88,7 @@ To simplify virtual machine provisioning, a reusable **VM Template** was created
 
 Using templates is considered a best practice in enterprise environments because it allows administrators to deploy standardized virtual machines without repeating the operating system installation and configuration process.
 
-After creating the template, a new virtual machine (**Windows10-QA**) was deployed by cloning an existing Windows virtual machine. This demonstrates how vCenter accelerates VM provisioning while ensuring consistency across deployments.
+After creating the template, a new virtual machine (**Windows10-QA**) was deployed by cloning an existing Windows virtual machine.
 
 ### Benefits
 
@@ -112,48 +98,45 @@ After creating the template, a new virtual machine (**Windows10-QA**) was deploy
 - Reduced deployment time
 - Simplified infrastructure management
 
-The following screenshot shows the VM Template that was created and used for future deployments.
+The following screenshot shows the VM Template created for future deployments.
 
-<img width="959" height="543" alt="VM Template" src="https://github.com/user-attachments/assets/26ecfbac-844c-4c5b-9453-041faa4cc66b" />
+<img width="959" alt="VM Template" src="https://github.com/user-attachments/assets/26ecfbac-844c-4c5b-9453-041faa4cc66b">
 
-After that, a new virtual machine (**Windows10-QA**) was successfully created by cloning the existing **Windows10** machine, demonstrating rapid deployment capabilities available in VMware vCenter.
+The cloned virtual machine demonstrates how VMware vCenter enables rapid deployment while maintaining identical configuration with the source VM.
 
-![Clone Result](<img width="963" height="542" alt="Lab Console - VMware Lab Platform and 3 more pages - Personal - Microsoft​ Edge 7_15_2026 5_55_34 PM" src="https://github.com/user-attachments/assets/8ca7b6af-f791-4666-aead-3d73bf29d7a8" />
-)
+<img width="963" alt="Clone Result" src="https://github.com/user-attachments/assets/8ca7b6af-f791-4666-aead-3d73bf29d7a8">
 
 ---
 
 # 5. Snapshot Management
 
-Before making changes to a production virtual machine, a Snapshot was created.
+Before applying operating system updates, a Snapshot was created for the Windows virtual machine.
 
-Snapshots provide a restore point that allows administrators to quickly roll back if a software update or configuration change fails.
+Snapshots provide a restore point that enables administrators to quickly roll back if an update or configuration change causes issues.
 
-The snapshot created:
+Snapshot created:
 
-- Before-Windows-Update
+- **Before-Windows-Update**
 
-This is considered a best practice before major maintenance.
+This is considered a best practice before performing maintenance on production systems.
 
-![Snapshot](<img width="966" height="543" alt="Lab Console - VMware Lab Platform and 3 more pages - Personal - Microsoft​ Edge 7_15_2026 5_56_53 PM" src="https://github.com/user-attachments/assets/5ceca955-5882-4921-87f1-a62f9d01a43c" />
-)
+<img width="966" alt="Snapshot Management" src="https://github.com/user-attachments/assets/5ceca955-5882-4921-87f1-a62f9d01a43c">
 
 ---
 
 # 6. Performance Monitoring
 
-The Performance Monitor was used to observe the resource utilization of the Web Server.
+The Performance Monitor was used to analyze resource utilization for virtual machines.
 
 Metrics monitored include:
 
 - CPU Usage
 - Memory Usage
-- Real-time Performance
+- Real-Time Performance
 
-Monitoring allows administrators to detect bottlenecks before they impact users.
+Performance monitoring helps administrators detect bottlenecks and optimize resource utilization before services are affected.
 
-![Performance Monitoring](<img width="965" height="541" alt="Lab Console - VMware Lab Platform and 3 more pages - Personal - Microsoft​ Edge 7_15_2026 6_00_48 PM" src="https://github.com/user-attachments/assets/7e873b94-0537-49c6-be48-235ab0e865ee" />
-)
+<img width="965" alt="Performance Monitoring" src="https://github.com/user-attachments/assets/7e873b94-0537-49c6-be48-235ab0e865ee">
 
 ---
 
@@ -163,36 +146,70 @@ A DRS Anti-Affinity Rule was configured.
 
 Rule:
 
-Windows10
+- Windows10
+- Windows10-QA
 
-must not run on
+These virtual machines must run on different ESXi hosts whenever possible.
 
-Windows10-QA
+This improves availability by reducing the risk of both machines becoming unavailable due to a single host failure.
 
-Purpose:
-
-If one ESXi Host fails, both virtual machines will not be affected simultaneously.
-
-This increases availability inside the cluster.
-
-![DRS Rule](<img width="965" height="542" alt="Lab Console - VMware Lab Platform and 3 more pages - Personal - Microsoft​ Edge 7_15_2026 5_59_02 PM" src="https://github.com/user-attachments/assets/887d874d-ce56-493a-8421-334b3394c1b7" />
-)
+<img width="965" alt="DRS Rule" src="https://github.com/user-attachments/assets/887d874d-ce56-493a-8421-334b3394c1b7">
 
 ---
 
 # 8. Virtual Machine Migration (Compute vMotion)
 
-To simulate workload balancing within the cluster, several virtual machines were migrated between ESXi hosts using **Compute vMotion**.
+To simulate workload balancing within the cluster, virtual machines were migrated between ESXi hosts using **Compute vMotion**.
 
-Compute vMotion enables administrators to move a running virtual machine from one ESXi host to another without downtime or service interruption. This feature is commonly used for:
+Compute vMotion enables administrators to move running virtual machines between hosts without downtime or service interruption.
 
-- Load balancing across hosts
-- Planned maintenance
-- Hardware upgrades
-- Improving cluster resource utilization
+Common enterprise use cases include:
+
+- Load balancing
+- Planned hardware maintenance
+- Hardware replacement
+- Cluster optimization
+- Resource utilization improvement
 
 The migration tasks completed successfully, demonstrating seamless live migration managed by VMware vCenter.
 
+<img width="961" alt="Compute vMotion" src="https://github.com/user-attachments/assets/9314f7ce-ed9e-47d6-a45e-a5a8749a707c">
 
-![Recent Tasks](<img width="961" height="545" alt="Lab Console - VMware Lab Platform and 3 more pages - Personal - Microsoft​ Edge 7_15_2026 5_58_01 PM" src="https://github.com/user-attachments/assets/9314f7ce-ed9e-47d6-a45e-a5a8749a707c" />
-)
+---
+
+# Skills Demonstrated
+
+- VMware vCenter Administration
+- VMware ESXi Administration
+- Enterprise Datacenter Management
+- Resource Pool Management
+- VM Templates
+- Virtual Machine Cloning
+- Snapshot Management
+- Compute vMotion
+- DRS VM Rules
+- Performance Monitoring
+- Virtual Machine Lifecycle Management
+- Enterprise Virtualization
+
+---
+
+# Technologies Used
+
+- VMware vSphere
+- VMware vCenter Server
+- VMware ESXi
+- VMFS Datastore
+- VMware DRS
+- Compute vMotion
+- Resource Pools
+- VM Templates
+- VMware Snapshots
+
+---
+
+# Author
+
+**Ahmed Youssef**
+
+Infrastructure & Cloud Engineer
