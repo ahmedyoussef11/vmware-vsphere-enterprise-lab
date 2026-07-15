@@ -100,11 +100,10 @@ After creating the template, a new virtual machine (**Windows10-QA**) was deploy
 
 The following screenshot shows the VM Template created for future deployments.
 
-<img width="959" alt="VM Template" src="https://github.com/user-attachments/assets/26ecfbac-844c-4c5b-9453-041faa4cc66b">
+<img width="963" alt="Clone Result" src="https://github.com/user-attachments/assets/8ca7b6af-f791-4666-aead-3d73bf29d7a8">
 
 The cloned virtual machine demonstrates how VMware vCenter enables rapid deployment while maintaining identical configuration with the source VM.
 
-<img width="963" alt="Clone Result" src="https://github.com/user-attachments/assets/8ca7b6af-f791-4666-aead-3d73bf29d7a8">
 
 ---
 
